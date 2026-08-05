@@ -1,6 +1,7 @@
 from solver.basic_math import calculate
 from solver.tables import multiplication_table
 from solver.statistics import calculate_statistics
+from solver.algebra import solve_math
 
 print("========== AI MATH SOLVER ==========")
 
@@ -55,7 +56,13 @@ while True:
 
     elif choice == "6":
 
-        print("Algebra Solver Coming Soon...")
+        print("\n========== ALGEBRA SOLVER ==========")
+
+        algebra_problem = input("Enter algebra problem: ")
+
+        result = solve_math(algebra_problem)
+
+        print("\nResult:", result)
 
     elif choice == "0":
 
