@@ -39,3 +39,42 @@ def inverse_matrix(matrix):
 def matrix_trace(matrix):
     """Calculate the trace of a matrix."""
     return matrix.trace()
+
+if __name__ == "__main__":
+
+    A = create_matrix([
+        [1, 2],
+        [3, 4]
+    ])
+
+    B = create_matrix([
+        [5, 6],
+        [7, 8]
+    ])
+
+    print("Matrix A:")
+    print(A)
+
+    print("\nMatrix B:")
+    print(B)
+
+    print("\nAddition:")
+    print(add_matrices(A, B))
+
+    print("\nSubtraction:")
+    print(subtract_matrices(A, B))
+
+    print("\nMultiplication:")
+    print(multiply_matrices(A, B))
+
+    print("\nTranspose of A:")
+    print(transpose_matrix(A))
+
+    print("\nDeterminant of A:")
+    print(determinant(A))
+
+    print("\nInverse of A:")
+    print(inverse_matrix(A))
+
+    print("\nTrace of A:")
+    print(matrix_trace(A))
