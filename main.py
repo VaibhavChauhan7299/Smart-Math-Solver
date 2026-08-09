@@ -2,7 +2,16 @@ from solver.basic_math import calculate
 from solver.tables import multiplication_table
 from solver.statistics import calculate_statistics
 from solver.algebra import solve_math
-
+# from solver.matrices import (
+#     create_matrix,
+#     add_matrices,
+#     subtract_matrices,
+#     multiply_matrices,
+#     transpose_matrix,
+#     determinant,
+#     inverse_matrix,
+#     matrix_trace
+# )
 print("========== AI MATH SOLVER ==========")
 
 while True:
