@@ -1,3 +1,5 @@
+from os import name
+
 from sympy import Matrix
 
 
@@ -78,3 +80,31 @@ if __name__ == "__main__":
 
     print("\nTrace of A:")
     print(matrix_trace(A))
+
+    def input_matrix(name):
+        """Get a matrix from the user."""
+        print(f"\nEnter {name}:")
+
+        rows = int(input("Number of rows: "))
+        columns = int(input("Number of columns: "))
+
+        data = []
+
+        for i in range(rows):
+            while True:
+                values = input(
+                    f"Row {i + 1} ({columns} numbers): "
+                ).split()
+
+                if len(values) != columns:
+                    print(f"Please enter exactly {columns} numbers.")
+                    continue
+
+                try:
+                    row = [float(value) for value in values]
+                    data.append(row)
+                    break
+                except ValueError:
+                    print("Please enter valid numbers.")
+
+        return Matrix(data)
