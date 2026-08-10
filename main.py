@@ -10,13 +10,13 @@ from solver.matrices import (
     transpose_matrix,
     determinant,
     inverse_matrix,
-    matrix_trace
+    matrix_trace,
+    input_matrix,
 )
 
 print("========== AI MATH SOLVER ==========")
 
 while True:
-
     print("\n1. Basic Calculator")
     print("2. Multiplication Table")
     print("3. Statistics")
@@ -28,16 +28,13 @@ while True:
     choice = input("\nEnter your choice: ")
 
     if choice == "1":
-
         expression = input("Enter expression: ")
-
         answer = calculate(expression)
 
         print("\nExpression:", expression)
         print("Answer:", answer)
 
     elif choice == "2":
-
         number = int(input("Enter number: "))
         limit = int(input("Enter ending number: "))
 
@@ -47,103 +44,116 @@ while True:
             print(line)
 
     elif choice == "3":
-
         values = input("Enter numbers separated by spaces: ")
-
         numbers = [float(x) for x in values.split()]
 
         result = calculate_statistics(numbers)
-
         print(result)
 
     elif choice == "4":
+        while True:
+            print("\n========== MATRIX SOLVER ==========")
+            print("1. Addition")
+            print("2. Subtraction")
+            print("3. Multiplication")
+            print("4. Transpose")
+            print("5. Determinant")
+            print("6. Inverse")
+            print("7. Trace")
+            print("0. Back")
 
-        print("\n========== MATRIX SOLVER ==========")
+            matrix_choice = input("\nEnter your choice: ")
 
-        print("1. Addition")
-        print("2. Subtraction")
-        print("3. Multiplication")
-        print("4. Transpose")
-        print("5. Determinant")
-        print("6. Inverse")
-        print("7. Trace")
-        print("0. Back")
+            if matrix_choice == "1":
+                A = input_matrix("Matrix A")
+                B = input_matrix("Matrix B")
 
-        matrix_choice = input("\nEnter your choice: ")
+                try:
+                    result = add_matrices(A, B)
+                    print("\nResult:")
+                    print(result)
+                except Exception as e:
+                    print("\nError:", e)
 
-        A = create_matrix([
-            [1, 2],
-            [3, 4]
-        ])
+            elif matrix_choice == "2":
+                A = input_matrix("Matrix A")
+                B = input_matrix("Matrix B")
 
-        B = create_matrix([
-            [5, 6],
-            [7, 8]
-        ])
+                try:
+                    result = subtract_matrices(A, B)
+                    print("\nResult:")
+                    print(result)
+                except Exception as e:
+                    print("\nError:", e)
 
-        if matrix_choice == "1":
+            elif matrix_choice == "3":
+                A = input_matrix("Matrix A")
+                B = input_matrix("Matrix B")
 
-            print("\nMatrix A + Matrix B:")
-            print(add_matrices(A, B))
+                try:
+                    result = multiply_matrices(A, B)
+                    print("\nResult:")
+                    print(result)
+                except Exception as e:
+                    print("\nError:", e)
 
-        elif matrix_choice == "2":
+            elif matrix_choice == "4":
+                A = input_matrix("Matrix")
+                result = transpose_matrix(A)
 
-            print("\nMatrix A - Matrix B:")
-            print(subtract_matrices(A, B))
+                print("\nTranspose:")
+                print(result)
 
-        elif matrix_choice == "3":
+            elif matrix_choice == "5":
+                A = input_matrix("Matrix")
 
-            print("\nMatrix A × Matrix B:")
-            print(multiply_matrices(A, B))
+                try:
+                    result = determinant(A)
+                    print("\nDeterminant:")
+                    print(result)
+                except Exception as e:
+                    print("\nError: Determinant requires a square matrix.")
 
-        elif matrix_choice == "4":
+            elif matrix_choice == "6":
+                A = input_matrix("Matrix")
 
-            print("\nTranspose of Matrix A:")
-            print(transpose_matrix(A))
+                try:
+                    result = inverse_matrix(A)
+                    print("\nInverse:")
+                    print(result)
+                except Exception as e:
+                    print("\nError: Matrix cannot be inverted.")
 
-        elif matrix_choice == "5":
+            elif matrix_choice == "7":
+                A = input_matrix("Matrix")
 
-            print("\nDeterminant of Matrix A:")
-            print(determinant(A))
+                try:
+                    result = matrix_trace(A)
+                    print("\nTrace:")
+                    print(result)
+                except Exception as e:
+                    print("\nError: Trace requires a square matrix.")
 
-        elif matrix_choice == "6":
+            elif matrix_choice == "0":
+                print("Returning to main menu...")
+                break
 
-            print("\nInverse of Matrix A:")
-            print(inverse_matrix(A))
-
-        elif matrix_choice == "7":
-
-            print("\nTrace of Matrix A:")
-            print(matrix_trace(A))
-
-        elif matrix_choice == "0":
-
-            print("Returning to main menu...")
-
-        else:
-
-            print("Invalid matrix choice.")
-
+            else:
+                print("Invalid matrix choice.")
 
     elif choice == "5":
-
         print("Graph Solver Coming Soon...")
 
     elif choice == "6":
-
         print("\n========== ALGEBRA SOLVER ==========")
-
         algebra_problem = input("Enter algebra problem: ")
-
         result = solve_math(algebra_problem)
 
         print("\nResult:", result)
 
     elif choice == "0":
-
         print("Thank you for using AI Math Solver.")
         break
 
     else:
-
         print("Invalid choice.")

@@ -1,5 +1,3 @@
-from os import name
-
 from sympy import Matrix
 
 
@@ -42,69 +40,64 @@ def matrix_trace(matrix):
     """Calculate the trace of a matrix."""
     return matrix.trace()
 
+
+def input_matrix(name):
+    """Get a matrix from the user."""
+
+    print(f"\nEnter {name}")
+
+    # Ask user for dimensions
+    rows = int(input("Number of rows: "))
+    columns = int(input("Number of columns: "))
+
+    data = []
+
+    # Ask user for every row
+    for i in range(rows):
+
+        while True:
+
+            values = input(
+                f"Row {i + 1} ({columns} numbers): "
+            ).split()
+
+            # Check number of values
+            if len(values) != columns:
+                print(
+                    f"Please enter exactly {columns} numbers."
+                )
+                continue
+
+            try:
+
+                row = [float(value) for value in values]
+
+                data.append(row)
+
+                break
+
+            except ValueError:
+
+                print("Please enter valid numbers.")
+
+    return Matrix(data)
+
+
 if __name__ == "__main__":
 
-    A = create_matrix([
-        [1, 2],
-        [3, 4]
-    ])
+    print("========== MATRIX TEST ==========")
 
-    B = create_matrix([
-        [5, 6],
-        [7, 8]
-    ])
+    A = input_matrix("Matrix A")
 
-    print("Matrix A:")
+    print("\nMatrix A:")
     print(A)
 
-    print("\nMatrix B:")
-    print(B)
+    print("\nDeterminant:")
+    
+    if A.rows == A.cols:
+        print(determinant(A))
+    else:
+        print("Determinant requires a square matrix.")
 
-    print("\nAddition:")
-    print(add_matrices(A, B))
-
-    print("\nSubtraction:")
-    print(subtract_matrices(A, B))
-
-    print("\nMultiplication:")
-    print(multiply_matrices(A, B))
-
-    print("\nTranspose of A:")
+    print("\nTranspose:")
     print(transpose_matrix(A))
-
-    print("\nDeterminant of A:")
-    print(determinant(A))
-
-    print("\nInverse of A:")
-    print(inverse_matrix(A))
-
-    print("\nTrace of A:")
-    print(matrix_trace(A))
-
-    def input_matrix(name):
-        """Get a matrix from the user."""
-        print(f"\nEnter {name}:")
-
-        rows = int(input("Number of rows: "))
-        columns = int(input("Number of columns: "))
-
-        data = []
-
-        for i in range(rows):
-            while True:
-                values = input(
-                    f"Row {i + 1} ({columns} numbers): "
-                ).split()
-
-                if len(values) != columns:
-                    print(f"Please enter exactly {columns} numbers.")
-                    continue
-
-                try:
-                    row = [float(value) for value in values]
-                    data.append(row)
-                    break
-                except ValueError:
-                    print("Please enter valid numbers.")
-
-        return Matrix(data)
