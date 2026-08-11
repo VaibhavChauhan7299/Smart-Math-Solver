@@ -41,3 +41,20 @@ def input_numbers():
         except ValueError:
 
             print("Please enter valid numbers.")
+
+            if __name__ == "__main__":
+
+                print("========== STATISTICS SOLVER ==========")
+
+    numbers = input_numbers()
+
+    result = calculate_statistics(numbers)
+
+    print("\n========== RESULT ==========")
+
+    print("Mean:", result["mean"])
+    print("Median:", result["median"])
+    print("Mode:", result["mode"])
+    print("Range:", result["range"])
+    print("Variance:", result["variance"])
+    print("Standard Deviation:", result["standard_deviation"])
