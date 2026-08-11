@@ -42,9 +42,10 @@ def input_numbers():
 
             print("Please enter valid numbers.")
 
-            if __name__ == "__main__":
 
-                print("========== STATISTICS SOLVER ==========")
+if __name__ == "__main__":
+
+    print("========== STATISTICS SOLVER ==========")
 
     numbers = input_numbers()
 
