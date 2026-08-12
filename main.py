@@ -1,8 +1,8 @@
-from solver.basic_math import calculate
-from solver.tables import multiplication_table
+from solver.basic_math_solver import calculate
+from solver.tables_solver import multiplication_table
 from solver.statistics_solver import calculate_statistics
-from solver.algebra import solve_math
-from solver.matrices import (
+from solver.algebra_solver import solve_math
+from solver.matrices_solver import (
     create_matrix,
     add_matrices,
     subtract_matrices,
