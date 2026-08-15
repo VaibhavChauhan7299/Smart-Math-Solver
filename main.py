@@ -13,7 +13,7 @@ from solver.matrices_solver import (
     matrix_trace,
     input_matrix,
 )
-from solver.statistics_solver import calculate_statistics,input_numbers
+from solver.statistics_solver import calculate_statistics, input_numbers
 print("========== AI MATH SOLVER ==========")
 
 while True:
